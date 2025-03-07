@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>product-detail</title>
+    <style>
+      /* body {
+        overflow: hidden;
+        height: auto;
+      }
+      .product {
+        margin: 0 auto;
+        width: 60%;
+      }
+      .detail {
+        float: left;
+        width: 40%;
+        margin-left: 3%;
+      }
+      .product_img {
+        float: left;
+        width: 40%;
+      }
+      .product_name {
+        margin-bottom: 0;
+        margin-top: 0;
+      }
+
+      .product_sub_name {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+
+      .nutrients_info {
+        float: left;
+      }
+
+      .product_size {
+        float: right;
+      }
+
+      .nutrients_content {
+        height: auto;
+      }
+
+      .table1 {
+        float: left;
+        width: 50%;
+      }
+
+      .table2 {
+        width: 50%;
+      }
+
+      .table_title {
+        width: 80%;
+      }
+
+      .table_content {
+        width: 20%;
+      }
+
+      .line {
+        border-left: thin dotted red;
+        height: auto;
+      } */
+
+      body {
+        margin-left: 20%;
+        margin-right: 20%;
+      }
+      .product {
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+      }
+      .product_category {
+        margin: 3% 0;
+      }
+      .detail {
+        flex: 1 1 auto;
+        margin-left: 3%;
+      }
+      .product_img {
+        width: 40%;
+      }
+      .product_name {
+        margin-top: 0;
+        margin-bottom: 1%;
+      }
+      .product_sub_name {
+        margin-top: 0;
+        margin-bottom: 3%;
+      }
+      .product_info {
+        margin-bottom: 5%;
+      }
+      .nutrients_content {
+        overflow: hidden;
+        width: 100%;
+      }
+      .table1,
+      .table2 {
+        width: 50%;
+        float: left;
+      }
+
+      .nutrients_info,
+      .product_size {
+        width: 46%;
+        float: left;
+        margin-left: 2%;
+      }
+
+      .product_size {
+        text-align: right;
+        margin-right: 2%;
+      }
+      .table_title,
+      .table_content {
+        padding: 7px;
+      }
+
+      .table_content {
+        text-align: right;
+      }
+      .bold_line {
+        border: 0px;
+        border-top: 2px solid #333333;
+      }
+      .thin_line {
+        border: 0px;
+        border-top: 1px solid lightgrey;
+      }
+      .allergy {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h2 class="product_category">카테고리</h2>
+    <div class="product">
+      <img src="../img/C0001.jpg" alt="상품-이미지" class="product_img" />
+      <div class="detail">
+        <header>
+          <h2 class="product_name">상품명</h2>
+          <h5 class="product_sub_name">상품명_영어</h5>
+        </header>
+        <hr class="bold_line" />
+        <section>
+          <p class="product_info">상품 설명~~~~~~~~~</p>
+          <hr class="thin_line" />
+          <div>
+            <p class="nutrients_info">제품 영양 정보</p>
+            <p class="product_size">사이즈 / 음료양</p>
+          </div>
+          <div style="clear: left"></div>
+          <hr class="thin_line" />
+          <article class="nutrients_content">
+            <table class="table1">
+              <tr>
+                <td class="table_title">1회 제공량 (kcal)</td>
+                <td class="table_content">80</td>
+              </tr>
+              <tr>
+                <td class="table_title">포화지방 (g)</td>
+                <td class="table_content">2</td>
+              </tr>
+              <tr>
+                <td class="table_title">단백질 (g)</td>
+                <td class="table_content">2</td>
+              </tr>
+            </table>
+            <div class="line"></div>
+            <table class="table2">
+              <tr>
+                <td class="table_title">나트륨 (mg)</td>
+                <td class="table_content">80</td>
+              </tr>
+              <tr>
+                <td class="table_title">당류 (g)</td>
+                <td class="table_content">2</td>
+              </tr>
+              <tr>
+                <td class="table_title">카페인 (mg)</td>
+                <td class="table_content">2</td>
+              </tr>
+            </table>
+            <div class="allergy">알레르기 유발요인:</div>
+          </article>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>
