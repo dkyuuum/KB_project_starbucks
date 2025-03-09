@@ -69,6 +69,7 @@
       body {
         margin-left: 20%;
         margin-right: 20%;
+        height: auto;
       }
       .product {
         display: flex;
@@ -100,9 +101,8 @@
         overflow: hidden;
         width: 100%;
       }
-      .table1,
-      .table2 {
-        width: 50%;
+      .table1 {
+        width: 100%;
         float: left;
       }
 
@@ -117,6 +117,7 @@
         text-align: right;
         margin-right: 2%;
       }
+
       .table_title,
       .table_content {
         padding: 7px;
@@ -125,16 +126,32 @@
       .table_content {
         text-align: right;
       }
+
       .bold_line {
         border: 0px;
         border-top: 2px solid #333333;
       }
+
       .thin_line {
         border: 0px;
         border-top: 1px solid lightgrey;
       }
+
       .allergy {
-        margin: 0;
+        padding: 10px;
+        background-color: #f4f4f2;
+        border-radius: 5px;
+      }
+
+      .btn_cart {
+        background-color: white;
+        border: 1px solid rgb(177, 177, 177);
+        border-radius: 3px;
+        padding: 5px;
+      }
+
+      .count_cart {
+        margin-top: 20px;
       }
     </style>
   </head>
@@ -162,32 +179,38 @@
               <tr>
                 <td class="table_title">1회 제공량 (kcal)</td>
                 <td class="table_content">80</td>
+                <td class="table_title">나트륨 (mg)</td>
+                <td class="table_content">80</td>
               </tr>
               <tr>
                 <td class="table_title">포화지방 (g)</td>
+                <td class="table_content">2</td>
+                <td class="table_title">당류 (g)</td>
                 <td class="table_content">2</td>
               </tr>
               <tr>
                 <td class="table_title">단백질 (g)</td>
                 <td class="table_content">2</td>
-              </tr>
-            </table>
-            <div class="line"></div>
-            <table class="table2">
-              <tr>
-                <td class="table_title">나트륨 (mg)</td>
-                <td class="table_content">80</td>
-              </tr>
-              <tr>
-                <td class="table_title">당류 (g)</td>
-                <td class="table_content">2</td>
-              </tr>
-              <tr>
                 <td class="table_title">카페인 (mg)</td>
                 <td class="table_content">2</td>
               </tr>
+              <tr>
+                <td>
+                  <div style="margin-bottom: 15px"></div>
+                </td>
+              </tr>
+              <tr>
+                <td class="allergy" colspan="4">알레르기 유발요인:</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <div class="count_cart">
+                    수량: <input type="number" name="count" id="count" />
+                    <button class="btn_cart">장바구니 담기</button>
+                  </div>
+                </td>
+              </tr>
             </table>
-            <div class="allergy">알레르기 유발요인:</div>
           </article>
         </section>
       </div>
