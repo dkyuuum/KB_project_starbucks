@@ -9,24 +9,27 @@
         margin: 0 auto;
         max-width: 80%;
       }
-      .product-container {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 10px;
+
+      .product-table {
+        width: 100%;
+        border-collapse: collapse;
       }
+
+      .product {
+        text-align: center;
+        padding: 10px;
+        width: 25%; /* 4개씩 정렬 */
+      }
+
       .product-img {
         width: 100%;
         height: auto;
       }
-      .product-list {
-        text-align: center;
-      }
+
       .product-name {
         margin-top: 0px;
       }
-      .product {
-        text-align: center;
-      }
+
       /* 태블릿 (768px ~ 1024px): 3개씩 배치 */
       @media screen and (max-width: 1024px) {
         .product-container {
