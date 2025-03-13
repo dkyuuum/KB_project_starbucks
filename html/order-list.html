@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>주문목록</title>
+    <!-- 외부 CSS 파일 연결 -->
+    <link rel="stylesheet" href="../css/order-list.css" />
+    <!-- JavaScript 파일 연결 -->
+    <script defer src="../js/order-list.js"></script>
+  </head>
+  <body>
+    <!-- 상단 헤더 영역 -->
+    <header class="header">
+      <h1>주문목록</h1>
+      <div class="date_range">
+        <label for="start_date">시작일</label>
+        <input type="date" id="start_date" />
+        <span>~</span>
+        <label for="end_date">종료일</label>
+        <input type="date" id="end_date" />
+        <button type="button" id="fetchOrders">조회</button>
+      </div>
+    </header>
+
+    <section class="order_list">
+      <table>
+        <thead>
+          <tr>
+            <th>주문번호</th>
+            <th>주문일자</th>
+            <th>상품번호</th>
+            <th>상품명</th>
+            <th>가격</th>
+            <th>주문수량</th>
+          </tr>
+        </thead>
+        <tbody id="orderTableBody">
+          <!-- 주문 데이터가 여기에 추가됩니다 -->
+        </tbody>
+      </table>
+    </section>
+  </body>
+</html>
