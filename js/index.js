@@ -1,10 +1,10 @@
 import express from 'express';
+import cors from 'cors';
 
 const app = express();
 const port = 3000;
 
 //CORS문제 해결
-const cors = require('cors');
 app.use(cors());
 
 /*요청ContentType이 x-www-form-urlencoded인 경우
@@ -19,5 +19,5 @@ app.get('/', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log('8080번 포트에서 server 실행 중 ...');
+  console.log('3000번 포트에서 server 실행 중 ...');
 });
