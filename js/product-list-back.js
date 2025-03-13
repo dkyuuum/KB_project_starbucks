@@ -33,6 +33,24 @@ app.get('/product/list', (req, res) => {
       prodPrice: 2200,
       prodImg: '../img/C0004.jpg',
     },
+    {
+      prodNo: 'C0005',
+      prodName: '아이스 라떼',
+      prodPrice: 2200,
+      prodImg: '../img/C0005.jpg',
+    },
+    {
+      prodNo: 'C0006',
+      prodName: '아이스 라떼',
+      prodPrice: 2200,
+      prodImg: '../img/C0006.jpg',
+    },
+    {
+      prodNo: 'C0007',
+      prodName: '아이스 라떼',
+      prodPrice: 2200,
+      prodImg: '../img/C0007.jpg',
+    },
   ];
 
   res.json(products);
