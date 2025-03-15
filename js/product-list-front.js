@@ -1,3 +1,15 @@
+window.addEventListener('load', function () {
+  let products = document.querySelectorAll('.product');
+  console.log('1');
+
+  window.addEventListener('click', () => {
+    // let prodNo = product.querySelector('p').textContent;
+    // window.location.href = `/product/detail/${prodNo}`;
+
+    console.log(product.prodNo);
+  });
+});
+
 const init = async () => {
   const URL = 'http://localhost:3000/product/list';
   let response = await getFetch(URL);
@@ -28,14 +40,14 @@ const init = async () => {
   let tr = document.createElement('tr'); // 첫 번째 행 생성
   response.forEach((product, index) => {
     var td = document.createElement('td');
-    td.classList.add(`product`);
+    td.classList.add('product');
 
     var img = document.createElement('img');
     img.setAttribute('src', product.prodImg);
     img.classList.add('product-img');
 
     var p = document.createElement('p');
-    p.classList.add(product.prodNo);
+    p.classList.add('product-name');
     p.textContent = product.prodNo;
 
     td.appendChild(img);
@@ -58,7 +70,6 @@ const init = async () => {
     }
     table.appendChild(tr);
   }
-
   document.getElementById('setTable').appendChild(table);
 };
 
@@ -67,16 +78,8 @@ const init = async () => {
  * */
 const getFetch = async (url) => {
   return await fetch(url)
-    .then((response) => response.json()) // fetch 함수가 끝날 때까지 기다려라
+    .then((response) => response.json())
     .catch((err) => console.error(err));
 };
 
 init();
-
-window.addEventListener('load', () => {
-  let product = document.getElementsByClass('.product');
-
-  window.addEventListener('click', () => {
-    console.log(prodNo);
-  });
-});

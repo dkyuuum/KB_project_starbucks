@@ -1,6 +1,8 @@
 const init = async () => {
   const URL = 'http://localhost:3000/product/detail/:prodNo';
   let response = await getFetch(URL);
+
+  
 };
 
 /**
