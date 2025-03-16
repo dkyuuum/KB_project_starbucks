@@ -1,15 +1,3 @@
-window.addEventListener('load', function () {
-  let products = document.querySelectorAll('.product');
-  console.log('1');
-
-  window.addEventListener('click', () => {
-    // let prodNo = product.querySelector('p').textContent;
-    // window.location.href = `/product/detail/${prodNo}`;
-
-    console.log(product.prodNo);
-  });
-});
-
 const init = async () => {
   const URL = 'http://localhost:3000/product/list';
   let response = await getFetch(URL);
@@ -71,6 +59,21 @@ const init = async () => {
     table.appendChild(tr);
   }
   document.getElementById('setTable').appendChild(table);
+
+  let products = document.querySelectorAll('.product');
+
+  products.forEach((product) => {
+    product.addEventListener('click', () => {
+      let prodNo = product.querySelector('p').textContent.trim();
+      let prodImg = product.querySelector('img')?.src || '';
+
+      if (prodNo) {
+        window.location.href = `/html/product-detail.html`;
+      }
+
+      console.log(prodNo);
+    });
+  });
 };
 
 /**
