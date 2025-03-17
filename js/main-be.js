@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const port = 3000;
+const path = require('path');
 
 const cors = require('cors');
 app.use(cors());
@@ -9,15 +10,16 @@ app.listen(port, () => {
   console.log('3000번 포트에서 backend server 실행중...');
 });
 
-// app.get('/', (req, res) => {
-//   res.send('STARBUCKS');
-// });
+// app.use(
+//   '/img',
+//   express.static(path.join(__dirname, 'KB_project_starbucks/img'))
+// );
 
 app.get('/', (req, res) => {
-  const products = [
-    { prodNo: 'C0001', prodName: '아메리카노', prodPrice: 1500 },
-    { prodNo: 'C0002', prodName: '바닐라라떼', prodPrice: 2000 },
-    { prodNo: 'C0003', prodName: '바닐라크림 콜드브루', prodPrice: 2500 },
+  const springProducts = [
+    { id: 2, imageUrl: '/img/2025_spring_top_drink02.png' },
+    { id: 1, imageUrl: '/img/2025_spring_top_drink01.png' },
+    { id: 3, imageUrl: '/img/2025_spring_top_drink03.png' },
   ];
-  res.json(products);
+  res.json(springProducts);
 });
