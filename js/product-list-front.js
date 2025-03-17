@@ -26,6 +26,7 @@ const init = async () => {
   table.classList.add('product-table');
 
   let tr = document.createElement('tr'); // 첫 번째 행 생성
+
   response.forEach((product, index) => {
     var td = document.createElement('td');
     td.classList.add(`product`);
@@ -36,7 +37,7 @@ const init = async () => {
 
     var p = document.createElement('p');
     p.classList.add(product.prodNo);
-    p.textContent = product.prodNo;
+    p.textContent = product.prodName;
 
     td.appendChild(img);
     td.appendChild(p);
@@ -60,6 +61,29 @@ const init = async () => {
   }
 
   document.getElementById('setTable').appendChild(table);
+
+  // 상품 클릭 시 정보 조회
+  onClinkProduct();
+};
+
+/**
+ * 상품 클릭 시 정보 넘기기 함수
+ * */
+const onClinkProduct = async () => {
+  let products = document.querySelectorAll('.product');
+
+  products.forEach((product) => {
+    product.addEventListener('click', (event) => {
+      let product = event.target.closest('.product');
+      if (!product) return;
+
+      let prodNo = product.querySelector('p').classList.value || '';
+      // let prodName = product.querySelector('p')?.textContent.trim() || '';
+
+      window.location.href = `/html/product-detail.html?${prodNo}`;
+      localStorage.setItem('selectedProdNo', prodNo);
+    });
+  });
 };
 
 /**
@@ -72,11 +96,3 @@ const getFetch = async (url) => {
 };
 
 init();
-
-window.addEventListener('load', () => {
-  let product = document.getElementsByClass('.product');
-
-  window.addEventListener('click', () => {
-    console.log(prodNo);
-  });
-});

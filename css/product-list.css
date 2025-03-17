@@ -1,0 +1,33 @@
+.product-container {
+  margin: 0 auto;
+  max-width: 80%;
+}
+
+.product {
+  text-align: center;
+  padding: 10px;
+  width: 20%; /* 4개씩 정렬 */
+}
+
+.product-img {
+  width: 100%;
+  height: auto;
+}
+
+.product-name {
+  margin-top: 0px;
+}
+
+/* 태블릿 (768px ~ 1024px): 3개씩 배치 */
+@media screen and (max-width: 1024px) {
+  .product-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* 모바일 (768px 이하): 2개씩 배치 */
+@media screen and (max-width: 768px) {
+  .product-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
