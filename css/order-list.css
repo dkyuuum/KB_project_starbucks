@@ -56,7 +56,7 @@ body {
 }
 
 /* 주문 내역 */
-.order_ist {
+.order_list {
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
@@ -92,9 +92,36 @@ body {
 .order_list tbody tr:nth-child(even) {
   background-color: #fafafa;
 }
+
+/* 페이지네이션 스타일 */
+#pagination {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+#pagination button {
+  background-color: #7e805d;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  margin: 0 5px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+#pagination button.active {
+  background-color: #52533d;
+}
+
+#pagination button:hover {
+  background-color: #52533d;
+}
+
 /* 
   화면이 768px 이하로 작아지면
-  .date-range를 숨기기 
+  .date_range를 숨기기 
 */
 @media (max-width: 768px) {
   .date_range {
