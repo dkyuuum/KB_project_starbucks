@@ -4,100 +4,31 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>product-detail</title>
-    <!-- <link href="../css/product-detail.css" type="c" -->
-    <style>
-      body {
-        margin-left: 20%;
-        margin-right: 20%;
-        height: auto;
-      }
-      .product {
-        display: flex;
-        flex-direction: row;
-        align-content: center;
-      }
-      .product_category {
-        margin: 3% 0;
-      }
-      .detail {
-        flex: 1 1 auto;
-        margin-left: 3%;
-      }
-      .product_img {
-        width: 40%;
-      }
-      .product_name {
-        margin-top: 0;
-        margin-bottom: 1%;
-      }
-      .product_sub_name {
-        margin-top: 0;
-        margin-bottom: 3%;
-      }
-      .product_info {
-        margin-bottom: 5%;
-      }
-      .nutrients_content {
-        overflow: hidden;
-        width: 100%;
-      }
-      .table1 {
-        width: 100%;
-        float: left;
-      }
-
-      .nutrients_info,
-      .product_size {
-        width: 46%;
-        float: left;
-        margin-left: 2%;
-      }
-
-      .product_size {
-        text-align: right;
-        margin-right: 2%;
-      }
-
-      .table_title,
-      .table_content {
-        padding: 7px;
-      }
-
-      .table_content {
-        text-align: right;
-      }
-
-      .bold_line {
-        border: 0px;
-        border-top: 2px solid #333333;
-      }
-
-      .thin_line {
-        border: 0px;
-        border-top: 1px solid lightgrey;
-      }
-
-      .allergy {
-        padding: 10px;
-        background-color: #f4f4f2;
-        border-radius: 5px;
-      }
-
-      .btn_cart {
-        background-color: white;
-        border: 1px solid rgb(177, 177, 177);
-        border-radius: 3px;
-        padding: 5px;
-      }
-
-      .count_cart {
-        margin-top: 20px;
-      }
-    </style>
+    <link rel="stylesheet" href="/css/product-detail.css" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <script src="/js/product-detail-front.js"></script>
   </head>
   <body>
-    <h2 class="product_category">카테고리</h2>
-    <div class="product">
+    <!-- HEAD -->
+    <div class="header">
+      <div class="gnb-inner">
+        <h1 class="logo">
+          <img src="/img/logo.png" alt="로고이미지" />
+        </h1>
+        <div class="nav">
+          <ul class="menu">
+            <li class="products"><a href="#">음료</a></li>
+            <li class="cart"><a href="#">장바구니</a></li>
+            <li class="orders"><a href="#">주문목록</a></li>
+            <li><a href="#">로그인</a></li>
+            <li><a href="#">로그아웃</a></li>
+            <li><a href="#">가입</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="product">
       <img src="../img/C0001.jpg" alt="상품-이미지" class="product_img" />
       <div class="detail">
         <header>
@@ -154,6 +85,12 @@
           </article>
         </section>
       </div>
-    </div>
+    </div> -->
+    <div class="product"></div>
+
+    <!-- footer -->
+    <!-- <footer id="footer">
+      <div class="footer-wrap">FOOT</div>
+    </footer> -->
   </body>
 </html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>로그인 페이지</title>
+    <style>
+      ol,
+      ul {
+        list-style: none;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f4f4f4;
+      }
+      .loginContainer {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 450px;
+        text-align: center;
+      }
+      .loginContainer h2 {
+        margin-bottom: 0;
+      }
+
+      .panel_wrap {
+        list-style: none;
+        padding: 0;
+        margin: 10px 0px;
+      }
+      .panel_items {
+        padding: 0;
+      }
+      .panel_inner {
+        padding: 10px 24px;
+      }
+      .input_id {
+        width: 100%;
+      }
+      .input_pw {
+        width: 100%;
+      }
+      .input_id {
+        height: 50px;
+      }
+      .input_pw {
+        height: 50px;
+      }
+      .check_btn {
+        width: 100%;
+        text-align: left;
+        margin-top: 10px;
+      }
+      .rember_id {
+        width: 17px;
+        height: 17px;
+        accent-color: #f2d8ce;
+      }
+      .login_btn_wrap {
+        margin-top: 15px;
+      }
+      .login_btn {
+        width: 100%;
+        background-color: #7e805d;
+        padding: 13px 20px;
+        border-radius: 5px;
+        box-sizing: border-box;
+        border: none;
+        cursor: pointer;
+      }
+      .btn_text {
+        color: white;
+        font-size: 20px;
+      }
+      .login_btn:hover {
+        background-color: #f2d8ce;
+        color: black;
+        cursor: pointer;
+      }
+      .login_btn:hover .btn_text {
+        color: black;
+      }
+      .login_service {
+        margin-top: 20px;
+      }
+      .login_service ul {
+        display: flex;
+        justify-content: center;
+        gap: 50px;
+        padding: 0;
+        margin-top: 15px;
+      }
+      .login_servic ul li {
+        width: auto;
+      }
+      .login_service ul li a {
+        text-decoration: none;
+        color: black;
+        font-size: 14px;
+        font-weight: bold;
+      }
+    </style>
+    <script>
+      window.addEventListener('load', function () {
+        let adminAccount = {
+          id: 'admin',
+          pw: 'admin',
+        };
+        let inputId;
+        let inputPw;
+        const loginBtn = document.getElementById('login_btn');
+
+        loginBtn.addEventListener('click', function () {
+          inputId = document.getElementById('id').value;
+          inputPw = document.getElementById('pw').value;
+
+          if (adminAccount.id != inputId || adminAccount.pw != inputPw) {
+            alert('아이디 또는 비밀번호를 정확히 입력해 주세요.');
+          } else {
+            alert('로그인에 성공하였습니다.');
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="loginContainer">
+      <h2>로그인</h2>
+      <form id="loginForm">
+        <ul class="panel_wrap">
+          <li class="panel_items">
+            <div class="panel_inner">
+              <div class="login_form">
+                <div class="login_box">
+                  <div class="input_user_id" id="input_user_id">
+                    <input
+                      type="text"
+                      id="id"
+                      name="id"
+                      class="input_id"
+                      placeholder="아이디를 입력해 주세요"
+                    />
+                  </div>
+                  <div class="input_user_pw" id="input_user_pw">
+                    <input
+                      type="text"
+                      id="pw"
+                      name="pw"
+                      class="input_pw"
+                      placeholder="비밀번호를 입력해 주세요"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="check_btn">
+                <input type="checkbox" id="rember_id" class="rember_id" />
+                <label for="rember_id" class="rember_text">아이디 저장</label>
+              </div>
+              <div class="login_btn_wrap">
+                <button type="submit" class="login_btn" id="login_btn">
+                  <span class="btn_text" id="login_btn_text">로그인</span>
+                </button>
+              </div>
+              <div class="login_service">
+                <ul class="login_service_wrap" id="login_service_wrap">
+                  <li><a href="#">회원가입</a></li>
+                  <li><a href="#">아이디 찾기</a></li>
+                  <li><a href="#">비밀번호 찾기</a></li>
+                </ul>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </form>
+    </div>
+  </body>
+</html>
