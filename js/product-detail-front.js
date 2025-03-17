@@ -7,7 +7,7 @@ const init = async () => {
   productCategory.classList.add('product_category');
   productCategory.textContent = response.prodCategory;
 
-  const productDetailContainer = document.createElement('div');
+  const productDetailContainer = document.querySelector('.product');
   productDetailContainer.classList.add('product');
 
   // 이미지
@@ -16,11 +16,11 @@ const init = async () => {
   productImg.src = response.prodImg;
   productImg.alt = '상품-이미지';
 
-  // 상세 정보 컨테이너
+  // 상세 정보
   const detailContainer = document.createElement('div');
   detailContainer.classList.add('detail');
 
-  // 헤더 (상품명, 영문명)
+  // 상품명, 영문명
   const header = document.createElement('header');
   const productName = document.createElement('h2');
   productName.classList.add('product_name');
@@ -43,7 +43,7 @@ const init = async () => {
   productInfo.classList.add('product_info');
   productInfo.textContent = response.prodDesc;
 
-  // 영양 정보 컨테이너
+  // 영양 정보
   const nutrientsInfo = document.createElement('p');
   nutrientsInfo.classList.add('nutrients_info');
   nutrientsInfo.textContent = '제품 영양 정보';
@@ -65,14 +65,12 @@ const init = async () => {
     [
       '포화지방 (g)',
       `${response.prodFat}`,
-      ,
       '당류 (g)',
       `${response.prodSugar}`,
     ],
     [
       '단백질 (g)',
       `${response.prodProtein}`,
-      ,
       '카페인 (mg)',
       `${response.prodCaffeine}`,
     ],
@@ -116,12 +114,10 @@ const init = async () => {
   cartRow.appendChild(cartCell);
   table.appendChild(cartRow);
 
-  // 조립
   section.appendChild(productInfo);
   section.appendChild(document.createElement('hr')).classList.add('thin_line');
   section.appendChild(nutrientsInfo);
   section.appendChild(productSize);
-  section.appendChild(document.createElement('hr')).classList.add('thin_line');
   section.appendChild(table);
 
   detailContainer.appendChild(header);

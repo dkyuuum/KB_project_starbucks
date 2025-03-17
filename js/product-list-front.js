@@ -29,7 +29,7 @@ const init = async () => {
 
   response.forEach((product, index) => {
     var td = document.createElement('td');
-    td.classList.add(`product`);
+    td.classList.add('product');
 
     var img = document.createElement('img');
     img.setAttribute('src', product.prodImg);
@@ -70,7 +70,7 @@ const init = async () => {
  * 상품 클릭 시 정보 넘기기 함수
  * */
 const onClinkProduct = async () => {
-  let products = document.querySelectorAll('.product');
+  let products = document.querySelectorAll('.product-img');
 
   products.forEach((product) => {
     product.addEventListener('click', (event) => {
