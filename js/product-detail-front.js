@@ -3,7 +3,7 @@ const init = async () => {
   const URL = `http://localhost:3000/product/detail/${prodNo}`;
   let response = await getFetch(URL);
 
-  const productCategory = document.createElement('h2');
+  const productCategory = document.createElement('div');
   productCategory.classList.add('product_category');
   productCategory.textContent = response.prodCategory;
 
@@ -103,7 +103,7 @@ const init = async () => {
 
   const countCartDiv = document.createElement('div');
   countCartDiv.classList.add('count_cart');
-  countCartDiv.innerHTML = `수량: <input type="number" name="count" id="count" />`;
+  countCartDiv.innerHTML = `<input type="number" name="count" id="count" />`;
 
   const cartButton = document.createElement('button');
   cartButton.classList.add('btn_cart');
