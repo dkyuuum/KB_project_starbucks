@@ -1,0 +1,130 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 기본 바디 스타일 */
+body {
+  font-family: sans-serif; /* 원하는 폰트로 변경 */
+  background-color: #f9f9f9; /* 페이지 배경색 */
+  color: #333;
+  padding: 20px;
+}
+
+/* 상단 헤더 */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* 날짜 범위 선택 영역 */
+.date_range {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.date_range label {
+  font-size: 14px;
+}
+
+.date_range input[type='date'] {
+  padding: 6px;
+  font-size: 14px;
+}
+
+.date_range button {
+  background-color: #7e805d;
+  color: #fff;
+  padding: 6px 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.date_range button:hover {
+  background-color: #52533d;
+}
+
+/* 주문 내역 */
+.order_list {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.order_list h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+/* 테이블 스타일 */
+.order_list table {
+  width: 100%;
+  max-width: 1300px;
+  border-collapse: collapse;
+  margin: 50px auto;
+  table-layout: fixed;
+}
+
+.order_list th,
+.order_list td {
+  border: 1px solid #eee;
+  padding: 12px;
+  text-align: center;
+  font-size: 14px;
+  word-wrap: break-word; /* 긴 내용 줄바꿈 처리 */
+}
+
+.order_list thead {
+  background-color: #f5f5f5;
+}
+
+.order_list tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+/* 페이지네이션 스타일 */
+#pagination {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+#pagination button {
+  background-color: #7e805d;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  margin: 0 5px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+#pagination button.active {
+  background-color: #52533d;
+}
+
+#pagination button:hover {
+  background-color: #52533d;
+}
+
+/* 
+  화면이 768px 이하로 작아지면
+  .date_range를 숨기기 
+*/
+@media (max-width: 768px) {
+  .date_range {
+    display: none;
+  }
+}
