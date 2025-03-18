@@ -9,42 +9,47 @@ body {
   font-family: sans-serif; /* 원하는 폰트로 변경 */
   background-color: #f9f9f9; /* 페이지 배경색 */
   color: #333;
-  padding: 20px;
 }
 
 /* 상단 헤더 */
-.header {
+/* .header2 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 30px;
-}
+  margin: 30px 0;
+} */
 
-.header h1 {
+/* .header2 h1 {
   font-size: 24px;
   font-weight: bold;
-}
+  margin-left: 30px;
+} */
 
 /* 날짜 범위 선택 영역 */
 .date_range {
   display: flex;
+  margin: 30px 20px 0 auto;
+  justify-content: flex-end;
   align-items: center;
   gap: 8px;
+  max-width: 1300px;
+  width: 100%;
 }
 
 .date_range label {
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .date_range input[type='date'] {
   padding: 6px;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .date_range button {
   background-color: #7e805d;
   color: #fff;
   padding: 6px 12px;
+  margin-right: 20px;
   border: none;
   cursor: pointer;
   border-radius: 4px;
@@ -57,8 +62,7 @@ body {
 
 /* 주문 내역 */
 .order_list {
-  background-color: #fff;
-  padding: 20px;
+  padding: 0 20px;
   border-radius: 8px;
 }
 

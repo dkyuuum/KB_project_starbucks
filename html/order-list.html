@@ -5,22 +5,45 @@
     <title>주문목록</title>
     <!-- 외부 CSS 파일 연결 -->
     <link rel="stylesheet" href="../css/order-list.css" />
+    <link rel="stylesheet" href="../css/main.css" />
     <!-- JavaScript 파일 연결 -->
     <script defer src="../js/order-list.js"></script>
   </head>
   <body>
     <!-- 상단 헤더 영역 -->
-    <header class="header">
-      <h1>주문목록</h1>
-      <div class="date_range">
-        <label for="start_date">시작일</label>
-        <input type="date" id="start_date" />
-        <span>~</span>
-        <label for="end_date">종료일</label>
-        <input type="date" id="end_date" />
-        <button type="button" id="fetchOrders">조회</button>
+    <div class="header">
+      <div class="gnb-inner">
+        <h1 class="logo">
+          <a href="./main.html">
+            <img src="/img/logo.png" alt="로고이미지" />
+          </a>
+        </h1>
+        <div class="nav">
+          <ul class="menu">
+            <li class="products">
+              <a href="./product-list.html">음료</a>
+            </li>
+            <li class="cart"><a href="./cart.html">장바구니</a></li>
+            <li class="orders-list">
+              <a href="./order-list.html">주문목록</a>
+            </li>
+            <li><a href="./signIn.html">로그인</a></li>
+            <li><a href="#">로그아웃</a></li>
+            <li><a href="./signUp.html">가입</a></li>
+          </ul>
+        </div>
       </div>
-    </header>
+    </div>
+
+    <!-- <h1>주문목록</h1> -->
+    <div class="date_range">
+      <label for="start_date">시작일</label>
+      <input type="date" id="start_date" />
+      <span>~</span>
+      <label for="end_date">종료일</label>
+      <input type="date" id="end_date" />
+      <button type="button" id="fetchOrders">조회</button>
+    </div>
 
     <section class="order_list">
       <table>
@@ -41,5 +64,10 @@
       <div id="pagination"></div>
       <!-- 페이지네이션 버튼을 위한 요소 추가 -->
     </section>
+
+    <!-- footer -->
+    <footer id="footer">
+      <div class="footer-wrap">FOOT</div>
+    </footer>
   </body>
 </html>

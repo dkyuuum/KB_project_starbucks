@@ -3,7 +3,7 @@ const orders = [
   {
     prodNo: 'C0001',
     orderDate: '2025-03-01',
-    productNumber: 'A001',
+    productNumber: '97',
     prodName: '아메리카노',
     prodPrice: '1500',
     quantity: '2',
@@ -11,15 +11,15 @@ const orders = [
   {
     prodNo: 'C0002',
     orderDate: '2025-03-02',
-    productNumber: 'A002',
-    prodName: '카푸치노',
+    productNumber: '3',
+    prodName: '아이스아메리카노',
     prodPrice: '2000',
     quantity: '3',
   },
   {
     prodNo: 'C0003',
     orderDate: '2025-03-05',
-    productNumber: 'A003',
+    productNumber: '5',
     prodName: '라떼',
     prodPrice: '1800',
     quantity: '1',
@@ -27,42 +27,34 @@ const orders = [
   {
     prodNo: 'C0004',
     orderDate: '2025-03-10',
-    productNumber: 'A001',
-    prodName: '아메리카노',
+    productNumber: '7',
+    prodName: '아이스라떼',
     prodPrice: '1500',
     quantity: '4',
   },
   {
     prodNo: 'C0005',
     orderDate: '2025-03-15',
-    productNumber: 'A004',
-    prodName: '콜드브루',
+    productNumber: '80',
+    prodName: '콜드브루몰트',
     prodPrice: '2500',
     quantity: '2',
   },
   {
     prodNo: 'C0006',
     orderDate: '2025-03-20',
-    productNumber: 'A002',
-    prodName: '카푸치노',
+    productNumber: '40',
+    prodName: '카페브레베',
     prodPrice: '2000',
     quantity: '1',
   },
   {
     prodNo: 'C0007',
     orderDate: '2025-03-22',
-    productNumber: 'A005',
-    prodName: '모카',
+    productNumber: '10',
+    prodName: '바닐라라떼',
     prodPrice: '2200',
     quantity: '2',
-  },
-  {
-    prodNo: 'C0008',
-    orderDate: '2025-03-25',
-    productNumber: 'A006',
-    prodName: '바닐라라떼',
-    prodPrice: '2400',
-    quantity: '1',
   },
 ];
 
@@ -135,7 +127,7 @@ function renderTable(data, page) {
 
     // 주문번호
     const prodNoTd = document.createElement('td');
-    prodNoTd.textContent = item.prodNo;
+    prodNoTd.textContent = item.productNumber;
     row.appendChild(prodNoTd);
 
     // 주문일자
@@ -145,7 +137,7 @@ function renderTable(data, page) {
 
     // 상품번호
     const productNumberTd = document.createElement('td');
-    productNumberTd.textContent = item.productNumber;
+    productNumberTd.textContent = item.prodNo;
     row.appendChild(productNumberTd);
 
     // 상품명
