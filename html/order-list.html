@@ -6,6 +6,7 @@
     <!-- 외부 CSS 파일 연결 -->
     <link rel="stylesheet" href="../css/order-list.css" />
     <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="/css/basic.css" />
     <!-- JavaScript 파일 연결 -->
     <script defer src="../js/order-list.js"></script>
   </head>
@@ -34,36 +35,6 @@
         </div>
       </div>
     </div>
-
-    <!-- <h1>주문목록</h1> -->
-    <div class="date_range">
-      <label for="start_date">시작일</label>
-      <input type="date" id="start_date" />
-      <span>~</span>
-      <label for="end_date">종료일</label>
-      <input type="date" id="end_date" />
-      <button type="button" id="fetchOrders">조회</button>
-    </div>
-
-    <section class="order_list">
-      <table>
-        <thead>
-          <tr>
-            <th>주문번호</th>
-            <th>주문일자</th>
-            <th>상품번호</th>
-            <th>상품명</th>
-            <th>가격</th>
-            <th>주문수량</th>
-          </tr>
-        </thead>
-        <tbody id="tableBody">
-          <!-- 주문 데이터가 여기에 추가됩니다 -->
-        </tbody>
-      </table>
-      <div id="pagination"></div>
-      <!-- 페이지네이션 버튼을 위한 요소 추가 -->
-    </section>
 
     <!-- footer -->
     <footer id="footer">
