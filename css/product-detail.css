@@ -28,6 +28,10 @@
   margin-bottom: 15px;
 }
 
+input {
+  padding: 10px;
+}
+
 .bold_line {
   border: none;
   border-top: 2px solid #333;
@@ -97,6 +101,7 @@
   justify-content: space-between;
   align-items: center;
   margin-top: 20px;
+  overflow: hidden;
 }
 
 .btn_cart {

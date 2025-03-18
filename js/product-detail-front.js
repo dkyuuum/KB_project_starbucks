@@ -96,21 +96,29 @@ const init = async () => {
   allergyRow.appendChild(allergyCell);
   table.appendChild(allergyRow);
 
-  // 장바구니 추가 UI
+  // 장바구니
   const cartRow = document.createElement('tr');
   const cartCell = document.createElement('td');
   cartCell.colSpan = 4;
 
-  const countCartDiv = document.createElement('div');
-  countCartDiv.classList.add('count_cart');
-  countCartDiv.innerHTML = `<input type="number" name="count" id="count" />`;
+  const cartContainer = document.createElement('div');
+  cartContainer.classList.add('cart_container');
+
+  // 수량
+  const countInput = document.createElement('input');
+  countInput.classList.add('count_cart');
+  countInput.type = 'number';
+  countInput.name = 'count';
+  countInput.id = 'count';
+  countInput.min = '1';
+  countInput.value = '1';
 
   const cartButton = document.createElement('button');
   cartButton.classList.add('btn_cart');
   cartButton.textContent = '장바구니 담기';
-
-  countCartDiv.appendChild(cartButton);
-  cartCell.appendChild(countCartDiv);
+  cartContainer.appendChild(countInput);
+  cartContainer.appendChild(cartButton);
+  cartCell.appendChild(cartContainer);
   cartRow.appendChild(cartCell);
   table.appendChild(cartRow);
 
@@ -121,13 +129,11 @@ const init = async () => {
   section.appendChild(table);
 
   detailContainer.appendChild(header);
-  detailContainer.appendChild(boldLine);
   detailContainer.appendChild(section);
 
   productDetailContainer.appendChild(productImg);
   productDetailContainer.appendChild(detailContainer);
 
-  // body에 추가
   document.body.appendChild(productDetailContainer);
 };
 
@@ -138,6 +144,33 @@ const getFetch = async (url) => {
   return await fetch(url)
     .then((response) => response.json()) // fetch 함수가 끝날 때까지 기다려라
     .catch((err) => console.error('err: ' + err));
+};
+
+/**
+ * 장바구니 담기
+ * */
+const addToCart = (product, countInput) => {
+  //   const count = parseInt(countInput.value, 10);
+
+  //   if (count < 1) {
+  //     alert('1개 이상 선택해주세요.');
+  //     return;
+  //   }
+
+  //   const cartItem = {
+  //     prodNo: product.prodNo,
+  //     prodName: product.prodName,
+  //     prodImg: product.prodImg,
+  //     prodPrice: product.prodPrice,
+  //     count: count,
+  //   };
+
+  //   let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  //   cart.push(cartItem);
+  //   localStorage.setItem('cart', JSON.stringify(cart));
+
+  alert('장바구니에 추가되었습니다!');
+  window.location.href = '../html/cart.html'; // 장바구니 페이지로 이동
 };
 
 init();
