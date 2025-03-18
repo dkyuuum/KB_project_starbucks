@@ -14,11 +14,12 @@ window.addEventListener('load', async () => {
       // img.src = `http:localhost:3000${product.imageUrl}`;
       img.src = `${product.imageUrl}`;
 
-      newDiv.style.marginTop = '50px';
-      newDiv.style.height = '80%';
+      // newDiv.style.marginTop = '50px';
+      // newDiv.style.height = '80%';
 
       newDiv.appendChild(img);
-      divContainer.appendChild(newDiv);
+      const newProduct = divContainer.appendChild(newDiv);
+      // newProduct.style.paddingTop = '50px';
     });
   } catch (err) {
     console.error('데이터 로드 실패', err);
