@@ -15,12 +15,12 @@ app.use(express.urlencoded({ extended: true }));
 요청의 body사용하고 싶다면 아래 함수를 사용하세요*/
 app.use(express.json());
 
-app.get('/', function (req, res) {
-  res.send('welcome!');
-});
+// app.get('/', function (req, res) {
+//   res.send('welcome!');
+// });
 
 require('./js/product-back')(app);
-
+require('./js/main-be')(app);
 app.listen(port, () => {
   console.log(`${port}번 포트에서 server 실행 중 ...`);
 });
