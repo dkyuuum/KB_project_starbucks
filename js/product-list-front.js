@@ -96,3 +96,5 @@ const getFetch = async (url) => {
 };
 
 init();
+
+export const productListFront = init();

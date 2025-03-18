@@ -1,3 +1,4 @@
+//
 window.addEventListener('load', async () => {
   const divContainer = document.querySelector('.contents');
 
@@ -22,4 +23,16 @@ window.addEventListener('load', async () => {
   } catch (err) {
     console.error('데이터 로드 실패', err);
   }
+
+  // 링크 연결
+  const productList = document.querySelector('.products > a');
+
+  productList.addEventListener('click', () => {
+    const contentsDiv = document.querySelector('.contents');
+    try {
+      contentsDiv.appendChild(response);
+    } catch (err) {
+      console.error('링크 연결 실패', err);
+    }
+  });
 });

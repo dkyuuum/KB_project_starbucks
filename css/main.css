@@ -28,8 +28,8 @@ img {
   }
 
   .logo {
-    width: 10%;
-    height: 60px;
+    width: 45px;
+    height: 45px;
     position: absolute;
     left: 0;
     display: flex; /* 자손을 수평나열이 아닌 정가운데 오게 하려고 처리 */
