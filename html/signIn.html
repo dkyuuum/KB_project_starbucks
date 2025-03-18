@@ -105,7 +105,28 @@
         font-weight: bold;
       }
     </style>
-    <script></script>
+    <script>
+      window.addEventListener('load', function () {
+        let adminAccount = {
+          id: 'admin',
+          pw: 'admin',
+        };
+        let inputId;
+        let inputPw;
+        const loginBtn = document.getElementById('login_btn');
+
+        loginBtn.addEventListener('click', function () {
+          inputId = document.getElementById('id').value;
+          inputPw = document.getElementById('pw').value;
+
+          if (adminAccount.id != inputId || adminAccount.pw != inputPw) {
+            alert('아이디 또는 비밀번호를 정확히 입력해 주세요.');
+          } else {
+            alert('로그인에 성공하였습니다.');
+          }
+        });
+      });
+    </script>
   </head>
   <body>
     <div class="loginContainer">
