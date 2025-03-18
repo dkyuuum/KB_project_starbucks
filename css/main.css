@@ -87,6 +87,7 @@ img {
     display: flex; /* 자손을 수평나열이 아닌 정가운데 오게 하려고 처리 */
     justify-content: center; /*가로 중앙 정렬*/
     align-items: center; /*세로 중앙 정렬*/
+    z-index: 50;
   }
 
   .nav {
@@ -95,6 +96,7 @@ img {
     height: 100%;
     align-items: center;
     padding-top: 40px;
+    z-index: 10;
   }
 
   .menu {
