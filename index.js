@@ -1,10 +1,10 @@
 const express = require('express');
+const cors = require('cors');
+
 const app = express();
-const path = require('path');
 const port = 3000;
 
 //CORS문제 해결
-const cors = require('cors');
 app.use(cors());
 
 /*요청ContentType이 x-www-form-urlencoded인 경우
@@ -19,8 +19,8 @@ app.get('/', function (req, res) {
   res.send('welcome!');
 });
 
-// app.use(express.static(path.join(__dirname, 'html')));
+require('./js/product-back')(app);
 
 app.listen(port, () => {
-  console.log('3000번 포트에서 server 실행 중 ...');
+  console.log(`${port}번 포트에서 server 실행 중 ...`);
 });
