@@ -2,6 +2,7 @@ const init = async () => {
   const prodNo = localStorage.getItem('selectedProdNo');
   const URL = `http://localhost:3000/product/detail/${prodNo}`;
   let response = await getFetch(URL);
+  console.log(response);
 
   const productCategory = document.createElement('div');
   productCategory.classList.add('product_category');

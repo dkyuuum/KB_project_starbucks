@@ -205,6 +205,7 @@ module.exports = (app) => {
 
     // 상품 찾기
     const product = products.find((p) => p.prodNo === prodNo);
+    console.log(product);
 
     if (!product) {
       return res.status(404).json({ message: '상품을 찾을 수 없습니다.' });
