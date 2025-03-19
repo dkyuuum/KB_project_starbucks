@@ -2,6 +2,7 @@ const init = async () => {
   const prodNo = localStorage.getItem('selectedProdNo');
   const URL = `http://localhost:3000/product/detail/${prodNo}`;
   let response = await getFetch(URL);
+  console.log(response);
 
   const productCategory = document.createElement('div');
   productCategory.classList.add('product_category');
@@ -148,7 +149,6 @@ const init = async () => {
  * */
 const addToCart = (product, countInput) => {
   // 구현 중..
-
   alert('장바구니에 추가되었습니다!');
   window.location.href = '../html/cart.html'; // 장바구니 페이지로 이동
 };
