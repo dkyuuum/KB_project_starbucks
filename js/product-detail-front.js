@@ -116,6 +116,7 @@ const init = async () => {
   const cartButton = document.createElement('button');
   cartButton.classList.add('btn_cart');
   cartButton.textContent = '장바구니 담기';
+
   cartContainer.appendChild(countInput);
   cartContainer.appendChild(cartButton);
   cartCell.appendChild(cartContainer);
@@ -150,24 +151,7 @@ const getFetch = async (url) => {
  * 장바구니 담기
  * */
 const addToCart = (product, countInput) => {
-  //   const count = parseInt(countInput.value, 10);
-
-  //   if (count < 1) {
-  //     alert('1개 이상 선택해주세요.');
-  //     return;
-  //   }
-
-  //   const cartItem = {
-  //     prodNo: product.prodNo,
-  //     prodName: product.prodName,
-  //     prodImg: product.prodImg,
-  //     prodPrice: product.prodPrice,
-  //     count: count,
-  //   };
-
-  //   let cart = JSON.parse(localStorage.getItem('cart')) || [];
-  //   cart.push(cartItem);
-  //   localStorage.setItem('cart', JSON.stringify(cart));
+  // 구현 중..
 
   alert('장바구니에 추가되었습니다!');
   window.location.href = '../html/cart.html'; // 장바구니 페이지로 이동

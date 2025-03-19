@@ -101,16 +101,18 @@ input {
   justify-content: space-between;
   align-items: center;
   margin-top: 20px;
-  overflow: hidden;
+  float: left;
 }
 
 .btn_cart {
   background: #00704a;
   color: white;
   padding: 10px 15px;
+  margin-top: 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  float: right;
 }
 
 .btn_cart:hover {
@@ -136,6 +138,7 @@ input {
 
   .count_cart {
     flex-direction: column;
+    margin: 0 auto;
   }
 
   .btn_cart {
