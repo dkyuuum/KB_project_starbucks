@@ -53,7 +53,7 @@ const onClinkProduct = async () => {
  * */
 const getFetch = async (url) => {
   return await fetch(url)
-    .then((response) => response.json()) // fetch 함수가 끝날 때까지 기다려라
+    .then((response) => response.json())
     .catch((err) => console.error(err));
 };
 
