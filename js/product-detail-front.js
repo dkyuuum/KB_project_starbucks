@@ -2,6 +2,7 @@ const init = async () => {
   const prodNo = localStorage.getItem('selectedProdNo');
   const URL = `http://localhost:3000/product/detail/${prodNo}`;
   let response = await getFetch(URL);
+  console.log(response);
 
   const productCategory = document.createElement('div');
   productCategory.classList.add('product_category');
@@ -146,11 +147,26 @@ const init = async () => {
 /**
  * 장바구니 담기
  * */
-const addToCart = (product, countInput) => {
-  // 구현 중..
+const addToCart = async (prodNo, count) => {
+  try {
+    const response = await fetch('http://localhost:3000/cart/add', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ prodNo, count }),
+    });
 
-  alert('장바구니에 추가되었습니다!');
-  window.location.href = '../html/cart.html'; // 장바구니 페이지로 이동
+    if (!response.ok) {
+      throw new Error('장바구니 추가 실패');
+    }
+
+    alert('장바구니에 추가되었습니다!');
+    window.location.href = '../html/cart.html'; // 장바구니 페이지로 이동
+  } catch (error) {
+    console.error('장바구니 추가 에러:', error);
+    alert('장바구니 추가 중 오류가 발생했습니다.');
+  }
 };
 
 /**
