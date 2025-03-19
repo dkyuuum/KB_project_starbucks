@@ -4,14 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>회원가입 페이지</title>
+    <link rel="stylesheet" href="/css/main.css" />
+    <script src="/js/main-fe.js"></script>
     <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
       body {
         font-family: Arial, sans-serif;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         height: 100vh;
         background-color: #f4f4f4;
+      }
+      .header {
+        width: 100%;
+      }
+      section {
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
       }
       .login_container {
         background: white;
@@ -71,6 +89,10 @@
       .register_btn {
         padding: 10px;
       }
+      footer {
+        width: 100%;
+        height: 80px;
+      }
     </style>
     <script>
       window.addEventListener('load', function () {
@@ -125,32 +147,58 @@
     </script>
   </head>
   <body>
-    <div class="login_container">
-      <h2>회원가입</h2>
-      <form id="loginForm">
-        <div class="form_group">
-          <label for="input_id">아이디</label>
-          <input type="text" class="input_id" id="input_id" />
-          <button type="button" class="check_id" id="check_id">
-            중복 확인
-          </button>
+    <!-- HEAD -->
+    <div class="header">
+      <div class="gnb-inner">
+        <h1 class="logo">
+          <img src="/img/logo.png" alt="로고이미지" />
+        </h1>
+        <div class="nav">
+          <ul class="menu">
+            <li class="products"><a href="#">음료</a></li>
+            <li class="cart"><a href="#">장바구니</a></li>
+            <li class="orders"><a href="#">주문목록</a></li>
+            <li><a href="#">로그인</a></li>
+            <li><a href="#">로그아웃</a></li>
+            <li><a href="#">가입</a></li>
+          </ul>
         </div>
-        <div class="form_group">
-          <label for="input_name">이름</label>
-          <input type="text" class="input_name" id="input_name" />
-        </div>
-        <div class="form_group">
-          <label for="input_pw">비밀번호</label>
-          <input type="text" class="pinput_pw" id="input_pw" />
-        </div>
-        <div class="form_group">
-          <label for="check_pw">비밀번호 확인</label>
-          <input type="text" class="check_pw" id="check_pw" />
-        </div>
-        <button type="submit" class="register_btn" id="register_btn">
-          가입하기
-        </button>
-      </form>
+      </div>
     </div>
+
+    <!-- section -->
+    <section>
+      <div class="login_container">
+        <h2>회원가입</h2>
+        <form id="loginForm">
+          <div class="form_group">
+            <label for="input_id">아이디</label>
+            <input type="text" class="input_id" id="input_id" />
+            <button type="button" class="check_id" id="check_id">
+              중복 확인
+            </button>
+          </div>
+          <div class="form_group">
+            <label for="input_name">이름</label>
+            <input type="text" class="input_name" id="input_name" />
+          </div>
+          <div class="form_group">
+            <label for="input_pw">비밀번호</label>
+            <input type="text" class="pinput_pw" id="input_pw" />
+          </div>
+          <div class="form_group">
+            <label for="check_pw">비밀번호 확인</label>
+            <input type="text" class="check_pw" id="check_pw" />
+          </div>
+          <button type="submit" class="register_btn" id="register_btn">
+            가입하기
+          </button>
+        </form>
+      </div>
+    </section>
+    <!-- footer -->
+    <footer id="footer">
+      <div class="footer-wrap">FOOT</div>
+    </footer>
   </body>
 </html>
