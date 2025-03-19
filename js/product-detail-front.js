@@ -1,5 +1,5 @@
 const init = async () => {
-  prodNo = localStorage.getItem('selectedProdNo');
+  const prodNo = localStorage.getItem('selectedProdNo');
   const URL = `http://localhost:3000/product/detail/${prodNo}`;
   let response = await getFetch(URL);
 
@@ -136,15 +136,11 @@ const init = async () => {
   productDetailContainer.appendChild(detailContainer);
 
   document.body.appendChild(productDetailContainer);
-};
 
-/**
- * GET 요청
- * */
-const getFetch = async (url) => {
-  return await fetch(url)
-    .then((response) => response.json()) // fetch 함수가 끝날 때까지 기다려라
-    .catch((err) => console.error('err: ' + err));
+  document.querySelector('.btn_cart').addEventListener('click', () => {
+    console.log(`장바구니 구현 중.. ${prodNo} ${countInput.value}`);
+    addToCart(prodNo, countInput.value);
+  });
 };
 
 /**
@@ -155,6 +151,15 @@ const addToCart = (product, countInput) => {
 
   alert('장바구니에 추가되었습니다!');
   window.location.href = '../html/cart.html'; // 장바구니 페이지로 이동
+};
+
+/**
+ * GET 요청
+ * */
+const getFetch = (url) => {
+  return fetch(url)
+    .then((response) => response.json()) // fetch 함수가 끝날 때까지 기다려라
+    .catch((err) => console.error('err: ' + err));
 };
 
 init();
