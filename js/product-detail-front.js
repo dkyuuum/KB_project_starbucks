@@ -146,11 +146,26 @@ const init = async () => {
 /**
  * 장바구니 담기
  * */
-const addToCart = (product, countInput) => {
-  // 구현 중..
+const addToCart = async (prodNo, count) => {
+  try {
+    const response = await fetch('http://localhost:3000/cart/add', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ prodNo, count }),
+    });
 
-  alert('장바구니에 추가되었습니다!');
-  window.location.href = '../html/cart.html'; // 장바구니 페이지로 이동
+    if (!response.ok) {
+      throw new Error('장바구니 추가 실패');
+    }
+
+    alert('장바구니에 추가되었습니다!');
+    window.location.href = './html/cart.html'; // 장바구니 페이지로 이동
+  } catch (error) {
+    console.error('장바구니 추가 에러:', error);
+    alert('장바구니 추가 중 오류가 발생했습니다.');
+  }
 };
 
 /**
@@ -162,39 +177,4 @@ const getFetch = (url) => {
     .catch((err) => console.error('err: ' + err));
 };
 
-// init();
-
-document.addEventListener('DOMContentLoaded', async function () {
-  const urlParams = new URLSearchParams(window.location.search);
-  const prodNo = urlParams.get('prodNo');
-
-  if (!prodNo) {
-    console.error('❌ Error: 상품 번호가 없습니다.');
-    return;
-  }
-
-  try {
-    // 🔹 서버에서 상품 정보 가져오기
-    const response = await fetch(
-      `http://localhost:3000/product/detail/${prodNo}`
-    );
-    const product = await response.json();
-
-    if (!response.ok)
-      throw new Error(
-        product.message || '상품 정보를 불러오는 데 실패했습니다.'
-      );
-
-    // 🔹 데이터 반영
-    document.querySelector('.product_name').textContent =
-      product.prodName || '상품명 없음';
-    document.querySelector('.product_sub_name').textContent =
-      product.prodSubName || '';
-    document.querySelector('.product_img').src =
-      product.prodImg || '../img/default.jpg';
-    document.querySelector('.product_info').textContent =
-      product.prodInfo || '상품 설명이 없습니다.';
-  } catch (error) {
-    console.error('❌ Error:', error.message);
-  }
-});
+init();

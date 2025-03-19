@@ -197,8 +197,10 @@ module.exports = (app) => {
     }
   });
 
+  const cart = []; // 장바구니 데이터
+
   // 장바구니 담기 API
-  app.post(`/cart/add`, (req, res) => {
+  app.post('/cart/add', (req, res) => {
     const { prodNo, count } = req.body;
 
     // 상품 찾기
@@ -207,5 +209,18 @@ module.exports = (app) => {
     if (!product) {
       return res.status(404).json({ message: '상품을 찾을 수 없습니다.' });
     }
+
+    // 장바구니에 추가
+    const cartItem = {
+      prodNo,
+      count,
+      prodName: product.prodName,
+      price: product.prodPrice,
+    };
+    cart.push(cartItem);
+
+    return res
+      .status(200)
+      .json({ message: '장바구니에 추가되었습니다.', cartItem });
   });
 };
