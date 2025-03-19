@@ -205,23 +205,32 @@ module.exports = (app) => {
 
     // 상품 찾기
     const product = products.find((p) => p.prodNo === prodNo);
-    console.log(product);
 
     if (!product) {
       return res.status(404).json({ message: '상품을 찾을 수 없습니다.' });
     }
 
-    // 장바구니에 추가
-    const cartItem = {
-      prodNo,
-      count,
-      prodName: product.prodName,
-      price: product.prodPrice,
-    };
-    cart.push(cartItem);
+    const existingCartItem = cart.find((item) => item.prodNo === prodNo);
+    //동일한 상품이 장바구니에 담겨있는 경우
+    if (existingCartItem) {
+      existingCartItem.count += parseInt(count, 10);
+    } else {
+      const cartItem = {
+        prodNo,
+        count: parseInt(count, 10),
+        prodName: product.prodName,
+        price: product.prodPrice,
+        proImg: product.prodImg,
+      };
+      cart.push(cartItem);
+    }
 
     return res
       .status(200)
-      .json({ message: '장바구니에 추가되었습니다.', cartItem });
+      .json({ message: '장바구니에 추가되었습니다.', cart });
+  });
+  // 장바구니 조회 API
+  app.get('/cart/list', (req, res) => {
+    res.json(cart);
   });
 };
