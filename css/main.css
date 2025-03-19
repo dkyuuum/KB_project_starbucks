@@ -15,118 +15,201 @@ img {
   display: block;
   border: none;
 }
-body {
-  /* margin-right: 20%;
-    margin-left: 20%; */
+
+#logout {
+  display: none;
 }
 
-/* HEAD */
-.header {
-  background-color: #f5e7c5;
-  position: relative;
-  width: 100%;
-  height: 100px;
-  margin: 0 auto; /*블록 요소를 부모 영역에서 가로 가운데 정렬*/
-  display: flex; /*자손 수평 정렬*/
-  justify-content: space-between; /*요소를 양쪽 끝으로 붙임*/
-  align-items: flex-end; /*세로 아래 정렬*/
-}
+/* 모바일 */
+@media all and (max-width: 960px) {
+  /* HEAD */
+  .header {
+    background-color: #f5e7c5;
+    height: 70px;
+  }
 
-.gnb-inner {
-  margin: 0 auto;
-  position: relative;
-  height: 100%;
-  width: 1200px;
-}
+  .logo {
+    width: 45px;
+    height: 45px;
+    position: absolute;
+    left: 0;
+    display: flex; /* 자손을 수평나열이 아닌 정가운데 오게 하려고 처리 */
+    justify-content: center; /*가로 중앙 정렬*/
+    align-items: center; /*세로 중앙 정렬*/
+  }
 
-.logo {
-  width: 10%;
-  height: 100px;
-  position: absolute;
-  left: 0;
-  display: flex; /* 자손을 수평나열이 아닌 정가운데 오게 하려고 처리 */
-  justify-content: center; /*가로 중앙 정렬*/
-  align-items: center; /*세로 중앙 정렬*/
-}
+  /* HEAD > 메뉴 */
+  .menu {
+    /* background-color: lightsteelblue; */
+    width: 80%;
+    float: right;
+    display: flex;
+    height: 60px;
+    justify-content: right;
+    align-items: center;
+  }
 
-.logo > img {
-}
-
-.nav {
-  /* background-color: lightseagreen; */
-  position: relative;
-  height: 100%;
-  align-items: center;
-  padding-top: 40px;
-}
-
-.menu {
-  /* background-color: lightsteelblue; */
-  width: 80%;
-  float: right;
-  display: flex;
-  height: 60px;
-  justify-content: right;
-  align-items: center;
-}
-
-.menu li {
-  width: 100%;
-  height: 60px;
-  float: right;
-  text-align: center;
-  line-height: 60px;
-}
-
-.menu a {
-  display: block;
-}
-
-.menu a:hover {
-  background-color: #7e805d;
-  color: #f5e7c5;
-}
-
-/* SECTION */
-.article {
-}
-
-.contents {
-  /* width: 1200px; */
-  margin: 0 auto;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-/* .contents img {
+  .menu li {
     width: 100%;
-  } */
+    height: 60px;
+    float: right;
+    text-align: center;
+    line-height: 60px;
+  }
 
-.contents div {
-  /* background-color: #7e805d; */
-  border: solid 1px #7e805d;
-  height: 400px;
-  width: 400px;
+  .menu a {
+    display: block;
+  }
+
+  .menu a:hover {
+    background-color: #7e805d;
+    color: #f5e7c5;
+  }
+
+  /* SECTION */
+  .article {
+    height: 1600px;
+    background-color: rgb(235, 213, 87);
+  }
+
+  .contents {
+    height: 40%;
+  }
+
+  .contents div {
+    padding-top: 50px;
+  }
+
+  .contents img {
+    margin: 0 auto;
+    padding-left: 70px;
+  }
+
+  /* 광고 */
+  .aside {
+    background-color: lightgrey;
+    margin: 0 auto;
+    height: 100px;
+  }
+
+  /* FOOTER */
+  #footer {
+    background-color: #2c2a29;
+    margin: 0 auto;
+    clear: both;
+    position: relative;
+    width: 100%;
+    height: 200px;
+    padding: 32px 0 35px 0;
+  }
 }
 
-.aside {
-  background-color: lightgrey;
-  margin: 0 auto;
-}
+/* 웹 */
+@media all and (min-width: 961px) {
+  /* HEAD */
+  .header {
+    background-color: #f5e7c5;
+    position: relative;
+    width: 100%;
+    height: 100px;
+    margin: 0 auto; /*블록 요소를 부모 영역에서 가로 가운데 정렬*/
+    display: flex; /*자손 수평 정렬*/
+    justify-content: space-between; /*요소를 양쪽 끝으로 붙임*/
+    align-items: flex-end; /*세로 아래 정렬*/
+  }
 
-/* FOOTER */
-#footer {
-  background-color: #2c2a29;
-  margin: 0 auto;
-  clear: both;
-  position: relative;
-  width: 100%;
-  padding: 32px 0 35px 0;
-}
+  .gnb-inner {
+    margin: 0 auto;
+    position: relative;
+    height: 100%;
+    width: 1200px;
+  }
 
-.footer-wrap {
-  height: 300px;
-  width: 1200px;
-  margin: 0 auto;
+  .logo {
+    width: 10%;
+    height: 100px;
+    position: absolute;
+    left: 0;
+    display: flex; /* 자손을 수평나열이 아닌 정가운데 오게 하려고 처리 */
+    justify-content: center; /*가로 중앙 정렬*/
+    align-items: center; /*세로 중앙 정렬*/
+    z-index: 50;
+  }
+
+  .nav {
+    /* background-color: lightseagreen; */
+    position: relative;
+    height: 100%;
+    align-items: center;
+    padding-top: 40px;
+    z-index: 10;
+  }
+
+  .menu {
+    /* background-color: lightsteelblue; */
+    width: 80%;
+    float: right;
+    display: flex;
+    height: 60px;
+    justify-content: right;
+    align-items: center;
+  }
+
+  .menu li {
+    width: 100%;
+    height: 60px;
+    float: right;
+    text-align: center;
+    line-height: 60px;
+  }
+
+  .menu a {
+    display: block;
+  }
+
+  .menu a:hover {
+    background-color: #7e805d;
+    color: #f5e7c5;
+  }
+
+  /* SECTION */
+  .article {
+    height: 580px;
+    background-color: rgb(235, 213, 87);
+  }
+
+  .contents {
+    width: 1200px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
+
+  .contents div {
+    padding-top: 50px;
+  }
+
+  .aside {
+    background-color: lightgrey;
+    margin: 0 auto;
+    height: 100px;
+  }
+
+  /* FOOTER */
+  #footer {
+    background-color: #2c2a29;
+    margin: 0 auto;
+    clear: both;
+    position: relative;
+    width: 100%;
+    padding: 32px 0 35px 0;
+  }
+
+  .footer-wrap {
+    height: 300px;
+    width: 1200px;
+    margin: 0 auto;
+  }
 }

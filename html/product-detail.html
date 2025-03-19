@@ -4,25 +4,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>product-detail</title>
+    <script src="/js/product-detail-front.js"></script>
+    <link rel="stylesheet" href="/css/basic.css" />
     <link rel="stylesheet" href="/css/product-detail.css" />
     <link rel="stylesheet" href="/css/main.css" />
-    <script src="/js/product-detail-front.js"></script>
   </head>
   <body>
     <!-- HEAD -->
     <div class="header">
       <div class="gnb-inner">
         <h1 class="logo">
-          <img src="/img/logo.png" alt="로고이미지" />
+          <a href="./main.html">
+            <img src="/img/logo.png" alt="로고이미지" />
+          </a>
         </h1>
         <div class="nav">
           <ul class="menu">
-            <li class="products"><a href="#">음료</a></li>
-            <li class="cart"><a href="#">장바구니</a></li>
-            <li class="orders"><a href="#">주문목록</a></li>
-            <li><a href="#">로그인</a></li>
-            <li><a href="#">로그아웃</a></li>
-            <li><a href="#">가입</a></li>
+            <li class="products"><a href="./product-list.html">음료</a></li>
+            <li class="cart"><a href="./cart.html">장바구니</a></li>
+            <li class="orders"><a href="./order-list.html">주문목록</a></li>
+            <li><a href="./signIn.html">로그인</a></li>
+            <li id="logout"><a href="#">로그아웃</a></li>
+            <li><a href="./signUp.html">가입</a></li>
           </ul>
         </div>
       </div>
@@ -86,6 +89,7 @@
         </section>
       </div>
     </div> -->
+    <div class="product_category"></div>
     <div class="product"></div>
 
     <!-- footer -->
