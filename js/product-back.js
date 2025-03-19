@@ -207,28 +207,5 @@ module.exports = (app) => {
     if (!product) {
       return res.status(404).json({ message: '상품을 찾을 수 없습니다.' });
     }
-
-    // 장바구니 배열이 없으면 생성
-    if (!global.cart) {
-      global.cart = [];
-    }
-
-    // 기존에 담긴 상품인지 확인
-    const existingItem = global.cart.find((item) => item.prodNo === prodNo);
-
-    if (existingItem) {
-      existingItem.count += count; // 기존 상품 수량 증가
-    } else {
-      global.cart.push({
-        prodNo: product.prodNo,
-        prodName: product.prodName,
-        prodImg: product.prodImg,
-        prodPrice: product.prodPrice,
-        count: count,
-      });
-    }
-
-    console.log(`장바구니에 ${product.prodName}(${count}개) 추가됨!`);
-    res.json({ message: '장바구니에 추가되었습니다!', cart: global.cart });
   });
 };
