@@ -1,4 +1,3 @@
-//
 window.addEventListener('load', async () => {
   const divContainer = document.querySelector('.contents');
 
@@ -11,15 +10,10 @@ window.addEventListener('load', async () => {
       const newDiv = document.createElement('div');
 
       const img = document.createElement('img');
-      // img.src = `http:localhost:3000${product.imageUrl}`;
       img.src = `${product.imageUrl}`;
-
-      // newDiv.style.marginTop = '50px';
-      // newDiv.style.height = '80%';
 
       newDiv.appendChild(img);
       const newProduct = divContainer.appendChild(newDiv);
-      // newProduct.style.paddingTop = '50px';
     });
   } catch (err) {
     console.error('데이터 로드 실패', err);
@@ -36,4 +30,16 @@ window.addEventListener('load', async () => {
       console.error('링크 연결 실패', err);
     }
   });
+
+  if (window.matchMedia('(max-width: 960px)').matches) {
+    const hamburger = document.querySelector('.hamburger');
+    const nav = document.querySelector('.nav');
+
+    hamburger.addEventListener('mouseover', function () {
+      nav.style.display = 'block';
+    });
+    hamburger.addEventListener('mouseout', function () {
+      nav.style.display = 'none';
+    });
+  }
 });
