@@ -5,6 +5,10 @@ const init = async () => {
   var container = document.createElement('div');
   container.classList.add('product-container');
 
+  var prodTitle = document.createElement('div');
+  prodTitle.classList.add('product-title');
+  prodTitle.innerHTML = '음료';
+
   response.forEach((product) => {
     var div = document.createElement('div');
     div.classList.add('product');
@@ -22,6 +26,7 @@ const init = async () => {
     container.appendChild(div);
   });
 
+  document.getElementById('setProductList').appendChild(prodTitle);
   document.getElementById('setProductList').appendChild(container);
 
   // 상품 클릭 이벤트 등록
@@ -53,7 +58,7 @@ const onClinkProduct = async () => {
  * */
 const getFetch = async (url) => {
   return await fetch(url)
-    .then((response) => response.json()) // fetch 함수가 끝날 때까지 기다려라
+    .then((response) => response.json())
     .catch((err) => console.error(err));
 };
 

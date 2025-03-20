@@ -14,7 +14,7 @@ module.exports = (app) => {
       prodSugar: 2,
       prodProtein: 3,
       prodCaffeine: 50,
-      prodAllergy: '우유',
+      prodAllergy: '',
       prodCount: '',
     },
     {
@@ -23,14 +23,14 @@ module.exports = (app) => {
       prodNameEng: 'Ice Americano',
       prodPrice: 1700,
       prodImg: '/img/C0002.jpg',
-      prodDesc: '맛있는 커피',
+      prodDesc: '으어 찹다',
       prodKcal: 80,
       prodSod: 80,
       prodFat: 2,
       prodSugar: 2,
       prodProtein: 3,
       prodCaffeine: 50,
-      prodAllergy: '우유',
+      prodAllergy: '',
       prodCount: '',
     },
     {
@@ -39,11 +39,11 @@ module.exports = (app) => {
       prodNameEng: 'Latte',
       prodPrice: 2000,
       prodImg: '../img/C0003.jpg',
-      prodDesc: '맛있는 커피',
-      prodKcal: 80,
+      prodDesc: '에스프레소 + 우유',
+      prodKcal: 100,
       prodSod: 80,
       prodFat: 2,
-      prodSugar: 2,
+      prodSugar: 0,
       prodProtein: 3,
       prodCaffeine: 50,
       prodAllergy: '우유',
@@ -55,11 +55,11 @@ module.exports = (app) => {
       prodNameEng: 'Ice Latte',
       prodPrice: 2200,
       prodImg: '../img/C0004.jpg',
-      prodDesc: '맛있는 커피',
-      prodKcal: 80,
+      prodDesc: '에스프레소 + 우유 + 얼음',
+      prodKcal: 100,
       prodSod: 80,
       prodFat: 2,
-      prodSugar: 2,
+      prodSugar: 0,
       prodProtein: 3,
       prodCaffeine: 50,
       prodAllergy: '우유',
@@ -69,26 +69,26 @@ module.exports = (app) => {
       prodNo: 'C0005',
       prodName: '콜드 브루 몰트',
       prodNameEng: 'Cold Brew Malt',
-      prodPrice: 2200,
+      prodPrice: 3000,
       prodImg: '../img/C0005.jpg',
-      prodDesc: '맛있는 커피',
-      prodKcal: 80,
+      prodDesc: '맛있다!',
+      prodKcal: 150,
       prodSod: 80,
       prodFat: 2,
       prodSugar: 2,
       prodProtein: 3,
       prodCaffeine: 50,
-      prodAllergy: '우유',
+      prodAllergy: '',
       prodCount: '',
     },
     {
       prodNo: 'C0006',
       prodName: '아이스 라벤더 카페 브레베',
       prodNameEng: 'Lavender Cafe Breve',
-      prodPrice: 2200,
+      prodPrice: 3500,
       prodImg: '../img/C0006.jpg',
-      prodDesc: '맛있는 커피',
-      prodKcal: 80,
+      prodDesc: '라벤더 향! ',
+      prodKcal: 200,
       prodSod: 80,
       prodFat: 2,
       prodSugar: 2,
@@ -101,10 +101,10 @@ module.exports = (app) => {
       prodNo: 'C0007',
       prodName: '스타벅스 1호점 크림 라떼',
       prodNameEng: 'Starbucks 1st Store Cream Latte',
-      prodPrice: 2200,
+      prodPrice: 3500,
       prodImg: '/img/C0007.jpg',
       prodDesc: '맛있는 커피',
-      prodKcal: 80,
+      prodKcal: 250,
       prodSod: 80,
       prodFat: 2,
       prodSugar: 2,
@@ -127,7 +127,7 @@ module.exports = (app) => {
       prodSugar: 2,
       prodProtein: 3,
       prodCaffeine: 50,
-      prodAllergy: '우유',
+      prodAllergy: '',
       prodCount: '',
     },
     {
@@ -136,14 +136,14 @@ module.exports = (app) => {
       prodNameEng: 'Ice Americano',
       prodPrice: 1700,
       prodImg: '/img/C0002.jpg',
-      prodDesc: '맛있는 커피',
+      prodDesc: '으어 찹다',
       prodKcal: 80,
       prodSod: 80,
       prodFat: 2,
       prodSugar: 2,
       prodProtein: 3,
       prodCaffeine: 50,
-      prodAllergy: '우유',
+      prodAllergy: '',
       prodCount: '',
     },
     {
@@ -197,8 +197,10 @@ module.exports = (app) => {
     }
   });
 
+  const cart = []; // 장바구니 데이터
+
   // 장바구니 담기 API
-  app.post(`/cart/add`, (req, res) => {
+  app.post('/cart/add', (req, res) => {
     const { prodNo, count } = req.body;
 
     // 상품 찾기
@@ -208,27 +210,27 @@ module.exports = (app) => {
       return res.status(404).json({ message: '상품을 찾을 수 없습니다.' });
     }
 
-    // 장바구니 배열이 없으면 생성
-    if (!global.cart) {
-      global.cart = [];
-    }
-
-    // 기존에 담긴 상품인지 확인
-    const existingItem = global.cart.find((item) => item.prodNo === prodNo);
-
-    if (existingItem) {
-      existingItem.count += count; // 기존 상품 수량 증가
+    const existingCartItem = cart.find((item) => item.prodNo === prodNo);
+    //동일한 상품이 장바구니에 담겨있는 경우
+    if (existingCartItem) {
+      existingCartItem.count += parseInt(count, 10);
     } else {
-      global.cart.push({
-        prodNo: product.prodNo,
+      const cartItem = {
+        prodNo,
+        count: parseInt(count, 10),
         prodName: product.prodName,
-        prodImg: product.prodImg,
-        prodPrice: product.prodPrice,
-        count: count,
-      });
+        price: product.prodPrice,
+        proImg: product.prodImg,
+      };
+      cart.push(cartItem);
     }
 
-    console.log(`장바구니에 ${product.prodName}(${count}개) 추가됨!`);
-    res.json({ message: '장바구니에 추가되었습니다!', cart: global.cart });
+    return res
+      .status(200)
+      .json({ message: '장바구니에 추가되었습니다.', cart });
+  });
+  // 장바구니 조회 API
+  app.get('/cart/list', (req, res) => {
+    res.json(cart);
   });
 };

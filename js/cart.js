@@ -1,156 +1,114 @@
 document.addEventListener('DOMContentLoaded', function () {
-  // 1. 테스트용 장바구니 데이터 (나중에 API 응답 등으로 대체)
-  var cartItems = [
-    {
-      id: 'C0001',
-      name: '라떼',
-      price: 6000,
-      qty: 2,
-      img: '../img/C0001.jpg',
-      alt: 'americano',
-    },
-    {
-      id: 'C0006',
-      name: '카페브레베',
-      price: 7000,
-      qty: 1,
-      img: '../img/C0006.jpg',
-      alt: 'drink',
-    },
-  ];
+  // 백엔드에서 장바구니 데이터를 가져옴
+  fetch('http://localhost:3000/cart/list') // 장바구니 조회 API 호출
+    .then((response) => response.json())
+    .then((cartItems) => {
+      // 받아온 데이터를 이용하여 장바구니 초기화
+      initCart(cartItems);
+    })
+    .catch((error) => {
+      console.error('장바구니 데이터를 가져오지 못했습니다.', error);
+    });
+});
 
-  // 메인 컨테이너 (장바구니 목록 + 결제 요약)
-  var main = document.createElement('main');
+function initCart(cartItems) {
+  // 메인 컨테이너 생성
+  const main = document.createElement('main');
   main.className = 'cart_container';
 
-  // ── 장바구니 상품 목록 영역 ──
-  var sectionCartItems = document.createElement('section');
+  // 장바구니 상품 목록 영역
+  const sectionCartItems = document.createElement('section');
   sectionCartItems.className = 'cart_items';
   main.appendChild(sectionCartItems);
 
-  // ── 결제 요약 영역 ──
-  var asideSummary = document.createElement('aside');
+  // 결제 요약 영역
+  const asideSummary = document.createElement('aside');
   asideSummary.className = 'cart_summary';
 
-  var h2Summary = document.createElement('h2');
-  h2Summary.textContent = '결제 예정 금액';
-  asideSummary.appendChild(h2Summary);
-
-  var summaryDetail = document.createElement('div');
-  summaryDetail.className = 'summary_detail';
-
-  var pProductAmount = document.createElement('p');
-  pProductAmount.innerHTML = '상품 금액 <span>0원</span>';
-  summaryDetail.appendChild(pProductAmount);
-
-  var pShippingFee = document.createElement('p');
-  pShippingFee.className = 'shipping_fee';
-  pShippingFee.innerHTML = '배송비 <span>0원</span>';
-  summaryDetail.appendChild(pShippingFee);
-
-  var pTotal = document.createElement('p');
-  pTotal.className = 'total';
-  pTotal.innerHTML = '합계 <span>0원</span>';
-  summaryDetail.appendChild(pTotal);
-
-  asideSummary.appendChild(summaryDetail);
-
-  var orderButton = document.createElement('button');
-  orderButton.type = 'button';
-  orderButton.className = 'order_button';
-  orderButton.textContent = '주문하기';
-  asideSummary.appendChild(orderButton);
-
+  asideSummary.innerHTML = `
+    <h2>결제 예정 금액</h2>
+    <div class="summary_detail">
+      <p class="product_amount">상품 금액 <span>0원</span></p>
+      <p class="shipping_fee">배송비 <span>0원</span></p>
+      <p class="total">합계 <span>0원</span></p>
+    </div>
+    <button type="button" class="order_button">주문하기</button>
+  `;
   main.appendChild(asideSummary);
 
-  // 생성한 메인 컨테이너를 body에 추가
+  // 메인 컨테이너를 body에 추가
   document.body.appendChild(main);
 
-  // 3. 장바구니 상품 렌더링 함수 (cartItems 배열 기반)
-  function renderCartItems(items) {
-    // 기존 상품 목록 초기화
-    sectionCartItems.innerHTML = '';
+  // 장바구니 상품 렌더링
+  renderCartItems(cartItems, sectionCartItems);
+}
 
-    items.forEach(function (item) {
-      // 상품 컨테이너
-      var cartItem = document.createElement('div');
-      cartItem.className = 'cart_item';
+function renderCartItems(items, sectionCartItems) {
+  // 기존 상품 목록 초기화
+  sectionCartItems.innerHTML = '';
 
-      // 이미지
-      var img = document.createElement('img');
-      img.src = item.img;
-      img.alt = item.alt;
-      cartItem.appendChild(img);
+  let totalProductAmount = 0; // 상품 금액 합계
+  const shippingFee = 3000; // 기본 배송비
 
-      // 상품 정보 컨테이너
-      var itemInfo = document.createElement('div');
-      itemInfo.className = 'item_info';
+  items.forEach((item) => {
+    // 상품 컨테이너 생성
+    const cartItem = document.createElement('div');
+    cartItem.className = 'cart_item';
 
-      // 상품명
-      var h2 = document.createElement('h2');
-      h2.textContent = item.name;
-      itemInfo.appendChild(h2);
+    cartItem.innerHTML = `
+      <img src="${item.proImg || '/img/default.jpg'}" alt="${
+      item.prodName || '상품 이미지'
+    }">
+      <div class="item_info">
+        <h2>${item.prodName}</h2>
+        <p class="price">${item.price.toLocaleString()}원</p>
+        <div class="quantity">
+          <label for="quantity-${item.prodNo}">수량</label>
+          <input type="number" id="quantity-${item.prodNo}" value="${
+      item.count
+    }" min="1">
+        </div>
+      </div>
+    `;
 
-      // 가격
-      var pPrice = document.createElement('p');
-      pPrice.className = 'price';
-      pPrice.textContent = item.price.toLocaleString() + '원';
-      itemInfo.appendChild(pPrice);
-
-      // 수량 영역
-      var divQuantity = document.createElement('div');
-      divQuantity.className = 'quantity';
-
-      var label = document.createElement('label');
-      label.htmlFor = 'qty_' + item.id;
-      label.textContent = '수량';
-      divQuantity.appendChild(label);
-
-      var input = document.createElement('input');
-      input.type = 'number';
-      input.id = 'qty_' + item.id;
-      input.value = item.qty;
-      input.min = '1';
-      divQuantity.appendChild(input);
-
-      itemInfo.appendChild(divQuantity);
-      cartItem.appendChild(itemInfo);
-      sectionCartItems.appendChild(cartItem);
+    // 수량 변경 이벤트 추가
+    const quantityInput = cartItem.querySelector(`#quantity-${item.prodNo}`);
+    quantityInput.addEventListener('change', function () {
+      item.count = parseInt(quantityInput.value, 10);
+      updateSummary(items);
     });
 
-    // 각 수량 입력에 이벤트 리스너 등록 (총액 업데이트)
-    var quantityInputs = document.querySelectorAll('.quantity input');
-    quantityInputs.forEach(function (inp) {
-      inp.addEventListener('input', updateTotal);
-    });
-  }
+    sectionCartItems.appendChild(cartItem);
 
-  // 4. 결제 금액 업데이트 함수
-  // 결제 요약 영역의 각 금액 표시 요소 가져오기
-  var prodAmtEl = pProductAmount.querySelector('span');
-  var shipEl = pShippingFee.querySelector('span');
-  var totalEl = pTotal.querySelector('span');
-  var SHIPPING_FEE = 3000;
-  var FREE_THRESHOLD = 50000;
+    // 상품 금액 합계 계산
+    totalProductAmount += item.price * item.count;
+  });
 
-  function updateTotal() {
-    var sum = 0;
-    var cartItemElems = document.querySelectorAll('.cart_item');
-    cartItemElems.forEach(function (item) {
-      var priceText = item.querySelector('.price').textContent;
-      var price = parseInt(priceText.replace('원', '').replace(/,/g, ''));
-      var qty = parseInt(item.querySelector('.quantity input').value);
-      sum += price * qty;
-    });
-    var shipFee = sum >= FREE_THRESHOLD ? 0 : SHIPPING_FEE;
-    var finalTotal = sum + shipFee;
+  // 결제 요약 업데이트
+  updateSummary(items, totalProductAmount, shippingFee);
+}
 
-    prodAmtEl.textContent = sum.toLocaleString() + '원';
-    shipEl.textContent = shipFee.toLocaleString() + '원';
-    totalEl.textContent = finalTotal.toLocaleString() + '원';
-  }
+function updateSummary(items, totalProductAmount = 0, shippingFee = 3000) {
+  // 상품 금액 합계 계산
+  totalProductAmount = items.reduce(
+    (sum, item) => sum + item.price * item.count,
+    0
+  );
 
-  // 5. 초기 렌더링 및 총액 계산
-  renderCartItems(cartItems);
-  updateTotal();
-});
+  // 배송비 계산 (예: 5만 원 이상 무료 배송)
+  shippingFee = totalProductAmount >= 50000 ? 0 : 3000;
+
+  // 총합계 계산
+  const totalAmount = totalProductAmount + shippingFee;
+
+  // DOM 업데이트
+  document.querySelector(
+    '.product_amount span'
+  ).textContent = `${totalProductAmount.toLocaleString()}원`;
+  document.querySelector(
+    '.shipping_fee span'
+  ).textContent = `${shippingFee.toLocaleString()}원`;
+  document.querySelector(
+    '.total span'
+  ).textContent = `${totalAmount.toLocaleString()}원`;
+}

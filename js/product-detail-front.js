@@ -1,7 +1,8 @@
 const init = async () => {
-  prodNo = localStorage.getItem('selectedProdNo');
+  const prodNo = localStorage.getItem('selectedProdNo');
   const URL = `http://localhost:3000/product/detail/${prodNo}`;
   let response = await getFetch(URL);
+  console.log(response);
 
   const productCategory = document.createElement('div');
   productCategory.classList.add('product_category');
@@ -116,6 +117,7 @@ const init = async () => {
   const cartButton = document.createElement('button');
   cartButton.classList.add('btn_cart');
   cartButton.textContent = '장바구니 담기';
+
   cartContainer.appendChild(countInput);
   cartContainer.appendChild(cartButton);
   cartCell.appendChild(cartContainer);
@@ -135,42 +137,45 @@ const init = async () => {
   productDetailContainer.appendChild(detailContainer);
 
   document.body.appendChild(productDetailContainer);
-};
 
-/**
- * GET 요청
- * */
-const getFetch = async (url) => {
-  return await fetch(url)
-    .then((response) => response.json()) // fetch 함수가 끝날 때까지 기다려라
-    .catch((err) => console.error('err: ' + err));
+  document.querySelector('.btn_cart').addEventListener('click', () => {
+    console.log(`장바구니 구현 중.. ${prodNo} ${countInput.value}`);
+    addToCart(prodNo, countInput.value);
+  });
 };
 
 /**
  * 장바구니 담기
  * */
-const addToCart = (product, countInput) => {
-  //   const count = parseInt(countInput.value, 10);
+const addToCart = async (prodNo, count) => {
+  try {
+    const response = await fetch('http://localhost:3000/cart/add', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ prodNo, count }),
+    });
 
-  //   if (count < 1) {
-  //     alert('1개 이상 선택해주세요.');
-  //     return;
-  //   }
+    if (!response.ok) {
+      throw new Error('장바구니 추가 실패');
+    }
 
-  //   const cartItem = {
-  //     prodNo: product.prodNo,
-  //     prodName: product.prodName,
-  //     prodImg: product.prodImg,
-  //     prodPrice: product.prodPrice,
-  //     count: count,
-  //   };
+    alert('장바구니에 추가되었습니다!');
+    window.location.href = '../html/cart.html'; // 장바구니 페이지로 이동
+  } catch (error) {
+    console.error('장바구니 추가 에러:', error);
+    alert('장바구니 추가 중 오류가 발생했습니다.');
+  }
+};
 
-  //   let cart = JSON.parse(localStorage.getItem('cart')) || [];
-  //   cart.push(cartItem);
-  //   localStorage.setItem('cart', JSON.stringify(cart));
-
-  alert('장바구니에 추가되었습니다!');
-  window.location.href = '../html/cart.html'; // 장바구니 페이지로 이동
+/**
+ * GET 요청
+ * */
+const getFetch = (url) => {
+  return fetch(url)
+    .then((response) => response.json()) // fetch 함수가 끝날 때까지 기다려라
+    .catch((err) => console.error('err: ' + err));
 };
 
 init();
