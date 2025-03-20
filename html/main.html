@@ -3,38 +3,95 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Starbukcs</title>
-    <style>
-      #logo {
-        width: 75px;
-        height: 75px;
-      }
-    </style>
+    <title>KB Starbucks Project</title>
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/basic.css" />
+    <script src="/js/main-fe.js"></script>
   </head>
   <body>
-    <header>
-      <!-- HEAD -->
-      <div class="logo">
-        <img src="./img/logo.png" id="logo" />
+    <!-- HEAD -->
+    <div class="header">
+      <div class="gnb-inner">
+        <h1 class="logo">
+          <a href="./main.html">
+            <img src="/img/logo.png" alt="로고이미지" />
+          </a>
+        </h1>
+        <div class="hamburger" onclick="toggleMenu()">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+        <div class="nav">
+          <ul class="menu" id="menu">
+            <!-- 메뉴 리스트 -->
+            <li class="products"><a href="./product-list.html">음료</a></li>
+            <li class="cart"><a href="./cart.html">장바구니</a></li>
+            <li class="orders"><a href="./order-list.html">주문목록</a></li>
+            <li><a href="./signIn.html">로그인</a></li>
+            <li id="logout"><a href="#">로그아웃</a></li>
+            <li><a href="./signUp.html">가입</a></li>
+          </ul>
+        </div>
       </div>
-      <nav>
-        <ul class="menu">
-          <li class="products"><a href="#">음료</a></li>
-          <li class="cart"><a href="#">장바구니</a></li>
-          <li class="orders"><a href="#">주문목록</a></li>
-          <li><a href="#">로그인</a></li>
-          <li><a href="#">로그아웃</a></li>
-          <li><a href="#">가입</a></li>
-        </ul>
-      </nav>
-    </header>
+    </div>
+
+    <!-- section -->
     <section>
-      <article>
-        내용
-        <div id="map" style="width: 100%; height: 95%; border: 1px solid"></div>
-      </article>
-      <aside>광고</aside>
+      <div class="article">
+        <div class="contents"></div>
+        <!-- <div id="map" style="width: 100%; height: 95%; border: 1px solid"></div> -->
+      </div>
+      <div class="aside">광고</div>
     </section>
-    <footer>FOOT</footer>
+
+    <!-- footer -->
+    <footer id="footer">
+      <div class="footer-wrap">
+        <div class="footer-menus">
+          <ul>
+            <li class="footer-menus-title">COMPANY</li>
+            <li><a href="#">한눈에 보기</a></li>
+            <li><a href="#">스타벅스 사명</a></li>
+            <li><a href="#">스타벅스 소개</a></li>
+            <li><a href="#">세계의 스타벅스</a></li>
+          </ul>
+          <ul>
+            <li class="footer-menus-title">CORPORATE SALES</li>
+            <li><a href="#">단체 및 기업 구매 안내</a></li>
+            <li><a href="#">단체 주문 배달 안내</a></li>
+          </ul>
+          <ul>
+            <li class="footer-menus-title">PARTNERSHIP</li>
+            <li><a href="#">신규 입점 제의</a></li>
+            <li><a href="#">협력 고객사 등록신청</a></li>
+            <li><a href="#">중개업체 확인</a></li>
+          </ul>
+          <ul>
+            <li class="footer-menus-title">ONLINE COMMUNITY</li>
+            <li><a href="#">페이스북</a></li>
+            <li><a href="#">트위터</a></li>
+            <li><a href="#">유튜브</a></li>
+            <li><a href="#">인스타그램</a></li>
+          </ul>
+          <ul>
+            <li class="footer-menus-title">RECRUIT</li>
+            <li><a href="#">채용 소개</a></li>
+            <li><a href="#">채용 지원하기</a></li>
+          </ul>
+        </div>
+        <ul class="copy-menu">
+          <li>사업자등록번호 : 201-81-2****</li>
+          <li>주식회사 에스씨케이컴퍼니 대표이사 : 손댕댕</li>
+          <li>TEL : 1522-3232</li>
+          <li>개인정보 보호책임자 : 이땡땡</li>
+        </ul>
+        <ul class="en">
+          <li>
+            <span>ⓒ 2025 Starbucks Coffee Company All Rights Reserved.</span>
+          </li>
+        </ul>
+      </div>
+    </footer>
   </body>
 </html>

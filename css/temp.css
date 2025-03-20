@@ -1,35 +1,33 @@
 .product {
-  max-width: 900px;
-  width: 80%;
-  margin: 5% auto;
+  max-width: 900px; /* 전체 크기 제한 */
+  width: 80%; /* 화면이 줄어들면 유동적으로 줄어듦 */
+  margin: 5% auto; /* 가운데 정렬 */
   display: flex;
-  align-items: flex-start;
-  gap: 30px;
+  align-items: flex-start; /* 위쪽 정렬 */
+  gap: 30px; /* 이미지와 텍스트 사이 여백 */
 }
-.product_category {
-  margin: 3% 0;
-}
-.detail {
-  flex: 1;
-}
+
 .product_img {
-  max-width: 500px;
-  width: 40%;
+  max-width: 300px; /* 이미지 크기 고정 */
+  width: 40%; /* 반응형 크기 조정 */
   height: auto;
+  border-radius: 10px; /* 부드러운 모서리 */
 }
+
+.detail {
+  flex: 1; /* 남은 공간 차지 */
+}
+
 .product_name {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 5px;
 }
+
 .product_sub_name {
-  font-size: 16px;
+  font-size: 13px;
   color: gray;
   margin-bottom: 15px;
-}
-
-input {
-  padding: 10px;
 }
 
 .bold_line {
@@ -37,82 +35,47 @@ input {
   border-top: 2px solid #333;
   margin: 15px 0;
 }
-.product_info {
-  margin-bottom: 5%;
-}
-.nutrients_content {
-  overflow: hidden;
-  width: 100%;
-}
+
 .table1 {
   width: 100%;
-  /* float: left; */
   border-collapse: collapse;
 }
+
 .table1 td {
   padding: 10px;
 }
-.nutrients_info,
-.product_size {
-  width: 46%;
-  float: left;
-  margin-left: 2%;
-  margin-bottom: 2%;
-}
 
-.product_size {
-  text-align: right;
-  margin-right: 2%;
-}
-
-.table_title,
-.table_content {
-  padding: 7px;
+.table_title {
+  font-weight: bold;
+  background: #f4f4f2;
 }
 
 .table_content {
   text-align: right;
-}
-
-.bold_line {
-  border: 0px;
-  border-top: 2px solid #333333;
-}
-
-.thin_line {
-  border: 0px;
-  border-top: 1px solid lightgrey;
 }
 
 .allergy {
   padding: 10px;
-  background-color: #f4f4f2;
+  background: #fff3cd;
   border-radius: 5px;
+  text-align: center;
 }
 
-.product_info,
-.nutrients_info,
-.product_size {
-  margin-top: 10px;
-}
-
+/* 장바구니 버튼 */
 .count_cart {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 20px;
-  float: left;
 }
 
 .btn_cart {
-  background: #00704a;
+  background: #00704a; /* 스타벅스 초록색 */
   color: white;
   padding: 10px 15px;
-  margin-top: 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  float: right;
 }
 
 .btn_cart:hover {
@@ -138,7 +101,6 @@ input {
 
   .count_cart {
     flex-direction: column;
-    margin: 0 auto;
   }
 
   .btn_cart {
