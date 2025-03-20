@@ -5,6 +5,10 @@ const init = async () => {
   var container = document.createElement('div');
   container.classList.add('product-container');
 
+  var prodTitle = document.createElement('div');
+  prodTitle.classList.add('product-title');
+  prodTitle.innerHTML = '음료';
+
   response.forEach((product) => {
     var div = document.createElement('div');
     div.classList.add('product');
@@ -22,6 +26,7 @@ const init = async () => {
     container.appendChild(div);
   });
 
+  document.getElementById('setProductList').appendChild(prodTitle);
   document.getElementById('setProductList').appendChild(container);
 
   // 상품 클릭 이벤트 등록
