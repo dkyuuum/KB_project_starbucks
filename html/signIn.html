@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>로그인 페이지</title>
     <link rel="stylesheet" href="/css/main.css" />
+    <script src="/js/main-fe.js"></script>
     <style>
       ol,
       ul {
@@ -47,7 +48,9 @@
         margin-bottom: 20px;
         font-size: 30px;
       }
-
+      .loginForm {
+        width: 100%;
+      }
       .panel_wrap {
         list-style: none;
         padding: 0;
@@ -178,7 +181,7 @@
     <section>
       <div class="loginContainer">
         <h1>로그인</h1>
-        <form id="loginForm">
+        <form class="loginForm">
           <ul class="panel_wrap">
             <li class="panel_items">
               <div class="panel_inner">
